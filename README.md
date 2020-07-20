@@ -10,9 +10,7 @@ Lab-Async-Inn
 ----
 
 ## Description
-This is a C# console application that will ask a user several questions about me, the
-developer. There are multiple question types ranging from inputting a number to True or False.
-At the end of the game the user receives their total score.
+This is a ASP.NET Core MVC web application that will allow Async Hotel to better manage the assets in their hotels.
 
 ---
 
@@ -34,8 +32,6 @@ Double click on the ```Async-Inn``` directory. ```
 
 ### Entity Relationship Diagram
 ![Image1]()
-
-
 
 * Async Inn - Table 1:
 The table holds the primary key ID. You could do without the first table, however, you can’t start a table with many to many. You need one to many. 
