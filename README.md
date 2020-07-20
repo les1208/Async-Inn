@@ -31,10 +31,10 @@ Double click on the ```Async-Inn``` directory. ```
 ---
 
 ### Entity Relationship Diagram
-![Image1]()
+![Image1](https://github.com/les1208/Async-Inn/blob/master/assets/%5BERD%5DAsyncInn.png)
 
 * Async Inn - Table 1:
-The table holds the primary key ID. You could do without the first table, however, you can’t start a table with many to many. You need one to many. 
+The table holds the primary key ID. You could do without the first table, however, you canâ€™t start a table with many to many. You need one to many. 
 
 * Hotel Locations - Table 2:
 The table holds a primary key for the hotel location and a foreign key of the Async Inn ID as the Hotel Location references Async Inn. It has the properties of name, city, state, address, and phone number.
