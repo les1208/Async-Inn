@@ -35,7 +35,7 @@ Then select and open ```DB.sln```
 ### Visuals
 - Database ERD Diagram
 * This web application is implemented the following database Schema, created for Code 401: Advanced Software Development in ASP.NET Core.
-![ERD](https://github.com/les1208/Async-Inn/blob/master/assets/%5BERD%5DAsyncInn.png)
+![ERD](https://github.com/les1208/Async-Inn/blob/master/assets/AsyncInn2.png)
 ---
 
 # Entity Relationship Diagram
