@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\DB",
+    "\\DB\\DB",
+    "\\DB\\DB\\Properties"
   ],
-  "SelectedNode": "\\README.md",
+  "SelectedNode": "\\DB\\DB\\README.md",
   "PreviewInSolutionExplorer": false
 }
