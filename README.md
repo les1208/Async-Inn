@@ -1,6 +1,7 @@
 # Intro to EFCore & APIs
 ## Async Inn
 
+Lab 13- Dependency Injection
 Lab12-Intro to EFCore & APIs
 
 *Author: Lesley Rivera*
@@ -45,10 +46,12 @@ Then select and open ```DB.sln```
 ---
 
 ### Change Log
-1.4: *Added seeded data* - July 21*
-1.3: *Created Simple Models and Database* - July 21*
-1.2: *Created ERD Diagram* - 20 July 2020*
-1.1: *App created* - 20 July 2020*
+- 1.6:IAmenity Interface and Amenity Repository Service added
+- 1.5: IHotel Interface and Hotel Repository Service added.
+- 1.4: *Added seeded data* - July 21
+- 1.3: *Created Simple Models and Database* - July 21*
+- 1.2: *Created ERD Diagram* - 20 July 2020*
+- 1.1: *App created* - 20 July 2020*
 
 
 ------------------------------
