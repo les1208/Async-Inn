@@ -1,12 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using DB.Interfaces;
-using DB.Properties.Data;
-using DB.Properties.models;
-using SQLitePCL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DB.Properties.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using DB.models;
+using DB.models.Interfaces;
+
 
 namespace DB.models.Services
 {
@@ -54,8 +56,13 @@ namespace DB.models.Services
 
             return hotel;
         }
-            
+
+        Task<ActionResult<IEnumerable<Hotel>>> IHotel.GetHotels()
+        {
+            throw new NotImplementedException();
         }
     }
+
+}
 
 

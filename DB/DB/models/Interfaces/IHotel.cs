@@ -25,6 +25,7 @@ namespace DB.Interfaces
         //Update
         Task <Hotel> Update(Hotel hotel);
 
+        //Delete
         Task Delete(int id);
 
 
