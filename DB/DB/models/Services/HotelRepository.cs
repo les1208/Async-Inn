@@ -1,23 +1,21 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DB.models.Interfaces;
+using DB.Properties.Data;
+using DB.Properties.models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DB.Properties.Data;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using DB.models;
-using DB.models.Interfaces;
-
 
 namespace DB.models.Services
 {
-    public class HotelRepo : IHotel
+    public class HotelRepository : IHotel
     {
 
         private AsyncInnDbContext _context;
 
-        public HotelRepo(AsyncInnDbContext context)
+        public HotelRepository(AsyncInnDbContext context)
         {
             _context = context;
         }
@@ -45,7 +43,7 @@ namespace DB.models.Services
 
         public async Task<List<Hotel>> GetHotels()
         {
-           var hotels = await _context.Hotels.ToListAsync();
+            var hotels = await _context.Hotels.ToListAsync();
             return hotels;
         }
 
@@ -57,12 +55,7 @@ namespace DB.models.Services
             return hotel;
         }
 
-        Task<ActionResult<IEnumerable<Hotel>>> IHotel.GetHotels()
-        {
-            throw new NotImplementedException();
-        }
     }
 
 }
-
 
