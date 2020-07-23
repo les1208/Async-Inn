@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using DB.Properties.Data;
 using DB.Properties.models;
 using DB.models.Services;
+using DB.models.Interfaces;
 
 namespace DB.Controllers
 {

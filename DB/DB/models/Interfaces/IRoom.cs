@@ -6,25 +6,24 @@ using System.Threading.Tasks;
 
 namespace DB.models.Interfaces
 {
-    public interface IHotel
+   public interface IRoom
     {
         // contain methods and properties that are requiered for the classes to implement 
 
         //Create
-        Task<Hotel> Create(Hotel hotel);
+        Task<Room> Create(Room room);
 
         //Read
         //Get All
-        Task<List<Hotel>> GetHotels();
+        Task<List<Room>> GetRooms();
 
         //Get individually (by Id)
-        Task<Hotel> GetHotel(int id);
+        Task<Room> GetRoom(int id);
 
         //Update
-        Task<Hotel> Update(Hotel hotel);
+        Task<Room> Update(Room room);
 
         //Delete
         Task Delete(int id);
     }
 }
-

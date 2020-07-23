@@ -43,7 +43,9 @@ namespace DB
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
-            services.AddTransient<IHotel, HotelRepo>();
+            services.AddTransient<IHotel, HotelRepository>();
+            services.AddTransient<IAmenities, AmenitiesRepository>();
+            services.AddTransient<IRoom, RoomRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
