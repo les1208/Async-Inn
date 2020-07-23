@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using DB.models.Interfaces;
+using DB.models.Services;
 
 namespace DB
 {
@@ -28,7 +30,7 @@ namespace DB
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
 
-  
+
         public void ConfigureServices(IServiceCollection services)
         {
             //This is where all dependecies are going to live
@@ -40,6 +42,8 @@ namespace DB
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddTransient<IHotel, HotelRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
