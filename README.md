@@ -1,8 +1,8 @@
 # Intro to EFCore & APIs
 ## Async Inn
 
-Lab 13- Dependency Injection
-Lab12-Intro to EFCore & APIs
+- Lab 13- Dependency Injection
+- Lab12-Intro to EFCore & APIs
 
 *Author: Lesley Rivera*
 
