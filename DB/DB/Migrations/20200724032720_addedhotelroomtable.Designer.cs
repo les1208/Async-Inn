@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DB.Migrations
 {
     [DbContext(typeof(AsyncInnDbContext))]
-    [Migration("20200722003142_Room")]
-    partial class Room
+    [Migration("20200724032720_addedhotelroomtable")]
+    partial class addedhotelroomtable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,6 +33,23 @@ namespace DB.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Amenities");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Mini Bar"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Free use of beach rentals!"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Bottomless Mimosas"
+                        });
                 });
 
             modelBuilder.Entity("DB.Properties.models.Hotel", b =>
@@ -98,8 +115,8 @@ namespace DB.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Layout")
-                        .HasColumnType("int");
+                    b.Property<string>("Layout")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -107,6 +124,95 @@ namespace DB.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Rooms");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Layout = "1 bedroom",
+                            Name = "Honu Suite"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Layout = "2 bedrooms",
+                            Name = "Aloha Suite"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Layout = "3 bedrooms",
+                            Name = "King Kamekameha"
+                        });
+                });
+
+            modelBuilder.Entity("DB.Properties.models.RoomAmenities", b =>
+                {
+                    b.Property<int>("AmenityId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AmenityId", "RoomId");
+
+                    b.HasIndex("RoomId");
+
+                    b.ToTable("RoomAmenities");
+                });
+
+            modelBuilder.Entity("DB.models.HotelRoom", b =>
+                {
+                    b.Property<int>("HotelId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoomNumber")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("PetFriendly")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("Rate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
+
+                    b.HasKey("HotelId", "RoomNumber");
+
+                    b.HasIndex("RoomId");
+
+                    b.ToTable("HotelRooms");
+                });
+
+            modelBuilder.Entity("DB.Properties.models.RoomAmenities", b =>
+                {
+                    b.HasOne("DB.Properties.models.Amenity", "Amenity")
+                        .WithMany()
+                        .HasForeignKey("AmenityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DB.Properties.models.Room", "Room")
+                        .WithMany()
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DB.models.HotelRoom", b =>
+                {
+                    b.HasOne("DB.Properties.models.Hotel", "Hotel")
+                        .WithMany()
+                        .HasForeignKey("HotelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DB.Properties.models.Room", "Room")
+                        .WithMany()
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

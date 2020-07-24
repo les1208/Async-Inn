@@ -25,5 +25,20 @@ namespace DB.models.Interfaces
 
         //Delete
         Task Delete(int id);
+
+        ///<summary>
+        ///adds amenity to room
+        ///<param name="amenityId"/> unique id of amenity </param>
+        ///<param name="RoomId"> unique id of room</param>
+        ///<returns>task completed</returns>
+        ///</summary>
+        Task AddAmenityToRoom(int RoomId, int AmenityId);
+
+        ///<summary>
+        ///Removes an amenity from room
+        ///<param name="AmenityId"/> unique id of amenity </param>
+        ///<param name="RoomId"/>unique id of amenity </param>
+        ///</summary>
+        Task RemoveAmenityFromRoom(int RoomId, int AmenityId);
     }
 }
