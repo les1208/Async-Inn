@@ -1,6 +1,7 @@
 # Intro to EFCore & APIs
 ## Async Inn
 
+- Lab 14- API's & Controllers
 - Lab 13- Dependency Injection
 - Lab12-Intro to EFCore & APIs
 
@@ -45,7 +46,9 @@ Then select and open ```DB.sln```
 
 ---
 
+
 ### Change Log
+- 1.7: RoomAmenities and HotelRoom join tables built
 - 1.6:IAmenity Interface and Amenity Repository Service added
 - 1.5: IHotel Interface and Hotel Repository Service added.
 - 1.4: *Added seeded data* - July 21
