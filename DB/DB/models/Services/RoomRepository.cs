@@ -19,8 +19,9 @@ namespace DB.models.Services
         }
 
         public async Task<Room> Create(Room room)
-        {
+        {   //Add room to db
             _context.Entry(room).State = Microsoft.EntityFrameworkCore.EntityState.Added;
+            //room is saved and then assigned id
             await _context.SaveChangesAsync();
 
             return room;
@@ -35,13 +36,21 @@ namespace DB.models.Services
 
         public async Task<Room> GetRoom(int id)
         {
-            Room room = await _context.Rooms.FindAsync(id);
+           var room = await _context.Rooms.FindAsync(id);
+
+
+            //Show all amenities room has
+            var roomAmenities = await _context.RoomAmenities.Where(x => x.AmenityId == id)
+                                                           .Include(x => x.Amenity)
+                                                           .ToListAsync();
+            room.RoomAmenities = roomAmenities;
             return room;
         }
 
         public async Task<List<Room>> GetRooms()
         {
-            var rooms = await _context.Rooms.ToListAsync();
+            var rooms = await _context.Rooms.Include(x => x.RoomAmenities)
+                                            .ToListAsync();
             return rooms;
         }
 
@@ -52,5 +61,25 @@ namespace DB.models.Services
 
             return room;
         }
+
+        public async Task AddAmenityToRoom(int RoomId, int AmenitiesId)
+        {
+            RoomAmenities roomAmenity = new RoomAmenities()
+            {
+                RoomId = RoomId,
+                AmenityId = AmenitiesId,
+            };
+
+            _context.Entry(roomAmenity).State = EntityState.Added;
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task RemoveAmenityFromRoomAsync(int amenityId, int roomId)
+        {
+            var result = await _context.RoomAmenities.FirstOrDefaultAsync(x => x.AmenityId == amenityId && x.RoomId == roomId);
+            _context.Entry(result).State = EntityState.Deleted;
+            await _context.SaveChangesAsync();
+        }
     }
+
 }

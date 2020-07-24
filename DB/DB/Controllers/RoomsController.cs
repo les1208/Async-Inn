@@ -62,6 +62,10 @@ namespace DB.Controllers
             return CreatedAtAction("GetAmenity", new { id = room.Id }, room);
         }
 
+        //[HttpPost]
+
+        //public async Task<IActionResult>Add
+
         // DELETE: api/Rooms/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Room>> DeleteRoom(int id)
@@ -69,6 +73,15 @@ namespace DB.Controllers
             await _room.Delete(id);
             return NoContent();
 
+        }
+
+        //Delete Amenity 
+        [HttpDelete]
+        [Route("{roomId}/Amenity{amenityId}")]
+        public async Task<IActionResult> RemoveAmenityFromRoom(int amenityId, int roomId)
+        {
+            await _room.RemoveAmenityFromRoom(amenityId, roomId);
+            return Ok();
         }
     }
 }

@@ -3,8 +3,11 @@
     "",
     "\\DB",
     "\\DB\\DB",
-    "\\DB\\DB\\Properties"
+    "\\DB\\DB\\Controllers",
+    "\\DB\\DB\\models",
+    "\\DB\\DB\\models\\Interfaces",
+    "\\DB\\DB\\models\\Services"
   ],
-  "SelectedNode": "\\DB\\DB\\README.md",
+  "SelectedNode": "\\DB\\DB\\models\\Amenity.cs",
   "PreviewInSolutionExplorer": false
 }

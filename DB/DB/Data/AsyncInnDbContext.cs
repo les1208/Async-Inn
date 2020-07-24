@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Security.Cryptography.X509Certificates;
+using System.Security.Cryptography.Xml;
+using DB.models;
 
 namespace DB.Properties.Data
 {
@@ -17,6 +20,13 @@ namespace DB.Properties.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<HotelRoom>().HasKey(x => new { x.HotelId, x.RoomNumber });
+
+            modelBuilder.Entity<RoomAmenities>().HasKey(x => new { x.AmenityId, x.RoomId });
+
+
+
             modelBuilder.Entity<Hotel>().HasData(
              new Hotel
              {
@@ -98,6 +108,10 @@ namespace DB.Properties.Data
         public DbSet<Room> Rooms { get; set; }
 
         public DbSet<Amenity> Amenities { get; set; }
+
+        public DbSet<RoomAmenities> RoomAmenities { get; set; }
+
+        public DbSet<HotelRoom> HotelRooms { get; set; }
     }
 
     }

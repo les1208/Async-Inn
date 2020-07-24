@@ -35,14 +35,16 @@ namespace DB
         {
             //This is where all dependecies are going to live
             //Enable the use of using controllers withing the MVC convention
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+    );
 
             //Register with the app, that the db exists, and what options to use for it.
             services.AddDbContext<AsyncInnDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
-
+            //Mapping-- register dependency injection
             services.AddTransient<IHotel, HotelRepository>();
             services.AddTransient<IAmenities, AmenitiesRepository>();
             services.AddTransient<IRoom, RoomRepository>();
