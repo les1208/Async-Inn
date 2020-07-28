@@ -62,23 +62,28 @@ namespace DB.models.Services
             return room;
         }
 
-        public async Task AddAmenityToRoom(int RoomId, int AmenitiesId)
+        public async Task AddAmenityToRoom(int roomId, int amenityId)
         {
-            RoomAmenities roomAmenity = new RoomAmenities()
+            RoomAmenities roomAmenities = new RoomAmenities()
             {
-                RoomId = RoomId,
-                AmenityId = AmenitiesId,
+                RoomId = roomId,
+                AmenityId = amenityId,
             };
 
-            _context.Entry(roomAmenity).State = EntityState.Added;
+            _context.Entry(roomAmenities).State = EntityState.Added;
             await _context.SaveChangesAsync();
         }
 
-        public async Task RemoveAmenityFromRoomAsync(int amenityId, int roomId)
+        public async Task RemoveAmenityFromRoomAsync(int roomId, int amenityId)
         {
             var result = await _context.RoomAmenities.FirstOrDefaultAsync(x => x.AmenityId == amenityId && x.RoomId == roomId);
             _context.Entry(result).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
+        }
+
+        public Task RemoveAmenityFromRoom(int roomId, int amenityId)
+       {
+          throw new NotImplementedException();
         }
     }
 
