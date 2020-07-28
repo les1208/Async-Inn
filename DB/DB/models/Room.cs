@@ -7,12 +7,14 @@ namespace DB.Properties.models
 {
     public class Room
     {
-        internal List<RoomAmenities> RoomAmenities;
+     
 
         public int Id { get; set; }
 
         public string Name { get; set; }
 
         public string Layout { get; set; }
+
+        public List<RoomAmenities> RoomAmenities { get; set; }
     }
 }
