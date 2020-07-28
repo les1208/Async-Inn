@@ -48,8 +48,9 @@ Then select and open ```DB.sln```
 
 
 ### Change Log
+- 1.8: Added HotelRoom IF, Controller, Added Nav properties
 - 1.7: RoomAmenities and HotelRoom join tables built
-- 1.6:IAmenity Interface and Amenity Repository Service added
+- 1.6: IAmenity Interface and Amenity Repository Service added
 - 1.5: IHotel Interface and Hotel Repository Service added.
 - 1.4: *Added seeded data* - July 21
 - 1.3: *Created Simple Models and Database* - July 21*
