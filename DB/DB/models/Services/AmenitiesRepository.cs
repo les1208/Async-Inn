@@ -17,6 +17,7 @@ namespace DB.models.Services
         {
             _context = context;
         }
+
         public async Task<Amenity> Create(Amenity amenity)
         {
             _context.Entry(amenity).State = Microsoft.EntityFrameworkCore.EntityState.Added;
@@ -33,7 +34,7 @@ namespace DB.models.Services
 
         public async Task<List<Amenity>> GetAmenities()
         {
-            List<Amenity> amenities = await _context.Amenities.ToListAsync();
+            var amenities = await _context.Amenities.ToListAsync();
             return amenities;
         }
 
