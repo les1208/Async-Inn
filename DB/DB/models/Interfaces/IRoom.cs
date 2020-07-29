@@ -32,13 +32,11 @@ namespace DB.models.Interfaces
         ///<param name="roomId"> unique id of room</param>
         ///<returns>task completed</returns>
         ///</summary>
-        Task AddAmenityToRoom(int roomId, int amenityId);
-
-        ///<summary>
+        Task AddAmenityToRoom(int amenityId, int roomId);
         ///Removes an amenity from room
         ///<param name="AmenityId"/> unique id of amenity </param>
         ///<param name="RoomId"/>unique id of amenity </param>
         ///</summary>
-        Task RemoveAmenityFromRoom(int roomId, int amenityId);
+        Task RemoveAmenityFromRoom(int amenityId, int roomId);
     }
 }

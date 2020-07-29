@@ -12,7 +12,7 @@ namespace DB.Properties.models
         public string Name { get; set; }
 
         //Nav properties
-        public List<RoomAmenities> RoomAmenities { get; set; }
+        public List<RoomAmenities> Rooms { get; set; }
 
     }
 }

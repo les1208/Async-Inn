@@ -17,10 +17,14 @@ namespace DB.models.Services
         {
             _context = context;
         }
-
+        /// <summary>
+        /// creates a new amenity in db
+        /// </summary>
+        /// <param name="amenity"></param>
+        /// <returns>succes in adding amenity</returns>
         public async Task<Amenity> Create(Amenity amenity)
         {
-            _context.Entry(amenity).State = Microsoft.EntityFrameworkCore.EntityState.Added;
+            _context.Entry(amenity).State = EntityState.Added;
             await _context.SaveChangesAsync();
             return amenity;
         }
@@ -28,7 +32,7 @@ namespace DB.models.Services
         public async Task Delete(int id)
         {
             Amenity amenity = await GetAmenity(id);
-            _context.Entry(amenity).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+            _context.Entry(amenity).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
         }
 
@@ -40,8 +44,12 @@ namespace DB.models.Services
 
         public async Task<Amenity> GetAmenity(int id)
         {
-            Amenity amenity = await _context.Amenities.FindAsync(id);
-            return amenity;
+            Amenity result = await _context.Amenities.FindAsync(id);
+            var rooms = await _context.RoomAmenities.Where(x => x.AmenityId == id)
+                                                    .Include(x => x.Room)
+                                                    .ToListAsync();
+            result.Rooms = rooms;
+            return result;
         }
 
         public async Task<Amenity> Update(Amenity amenity)

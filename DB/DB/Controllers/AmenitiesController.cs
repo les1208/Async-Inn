@@ -33,8 +33,7 @@ namespace DB.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Amenity>> GetAmenity(int id)
         {
-            Amenity amenity = await _amenity.GetAmenity(id);
-            return amenity;
+           return await _amenity.GetAmenity(id);
         }
 
         // PUT: api/Amenities/5
@@ -48,8 +47,8 @@ namespace DB.Controllers
                 return BadRequest();
             }
 
-            var UpdatedAmenity = await _amenity.Update(amenity);
-            return Ok(UpdatedAmenity);
+            var updatedAmenity = await _amenity.Update(amenity);
+            return Ok(updatedAmenity);
         }
 
         // POST: api/Amenities

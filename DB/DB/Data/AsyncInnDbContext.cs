@@ -1,11 +1,17 @@
 ﻿using DB.Properties.models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
+using System.Collections.Generic;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Security.Cryptography.X509Certificates;
+using System.Security.Cryptography.Xml;
 using DB.models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace DB.Properties.Data
 {
-    public class AsyncInnDbContext : IdentityDbContext<ApplicationUser>
+    public class AsyncInnDbContext : DbContext
     {
         public AsyncInnDbContext(DbContextOptions<AsyncInnDbContext> options) : base(options)
         {
@@ -14,7 +20,6 @@ namespace DB.Properties.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<HotelRoom>().HasKey(x => new { x.HotelId, x.RoomNumber });
 

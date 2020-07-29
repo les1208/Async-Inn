@@ -1,14 +1,18 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Policy;
+using System.Threading.Tasks;
+using DB.Properties.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using DB.models.Interfaces;
 using DB.models.Services;
-using DB.models;
-using DB.Properties.Data;
-using Microsoft.AspNetCore.Identity;
 
 namespace DB
 {
@@ -40,11 +44,6 @@ namespace DB
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
-
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                                .AddEntityFrameworkStores<AsyncInnDbContext>()
-                                .AddDefaultTokenProviders();
-
             //Mapping-- register dependency injection
             services.AddTransient<IHotel, HotelRepository>();
             services.AddTransient<IAmenities, AmenitiesRepository>();

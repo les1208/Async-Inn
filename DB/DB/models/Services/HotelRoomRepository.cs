@@ -20,7 +20,7 @@ namespace DB.models.Services
 
         public async Task<HotelRoom> Create(HotelRoom hotelRoom)
         {   //Add room to db
-            _context.Entry(hotelRoom).State = Microsoft.EntityFrameworkCore.EntityState.Added;
+            _context.Entry(hotelRoom).State = EntityState.Added;
             //room is saved and then assigned id
             await _context.SaveChangesAsync();
 
@@ -30,11 +30,6 @@ namespace DB.models.Services
         public async Task<HotelRoom> GetHotelRoom(int hotelId, int roomNumber)
         {
             HotelRoom hotelRoom = await _context.HotelRooms.FindAsync(hotelId, roomNumber);
-            var room = await _context.Rooms.Where(x => x.Id == hotelRoom.RoomId)
-                                            .Include(x => x.RoomAmenities)                                        
-                                            .ThenInclude(x => x.Amenity)
-                                            .ToListAsync();
-
             return hotelRoom;
 
 
@@ -43,14 +38,9 @@ namespace DB.models.Services
         /// <summary>
         /// Gets all the Hotel Rooms of the selected hotel
         /// </summary>
-        public async Task<List<HotelRoom>> GetHotelRooms(int hotelId)
+        public async Task<List<HotelRoom>> GetHotelRooms()
         {
-            var hotelRooms = await _context.HotelRooms.Where(x => x.HotelId == hotelId)
-                                                      .Include(x => x.Room)
-                                                      .ThenInclude(x => x.RoomAmenities)
-                                                      .ThenInclude(x => x.Amenity)
-                                                      .ToListAsync();
-
+            var hotelRooms = await _context.HotelRooms.ToListAsync();
             return hotelRooms;
         }
 
@@ -64,7 +54,7 @@ namespace DB.models.Services
         public async Task Delete(int hotelId, int roomNumber)
         {
             HotelRoom hotelRoom = await GetHotelRoom(hotelId, roomNumber);
-            _context.Entry(hotelRoom).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+            _context.Entry(hotelRoom).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
         }
 
