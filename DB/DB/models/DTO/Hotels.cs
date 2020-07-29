@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DB.models.DTO
 {
-    public class Class
+    public class Hotels
     {
     }
 }
