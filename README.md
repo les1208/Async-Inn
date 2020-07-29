@@ -1,6 +1,7 @@
 # Intro to EFCore & APIs
 ## Async Inn
 
+- Lab 17- Identity
 - Lab 16 - DTOs and Testing
 - Lab 14- API's & Controllers
 - Lab 13- Dependency Injection
