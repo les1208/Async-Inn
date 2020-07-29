@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DB.models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,5 +19,10 @@ namespace DB.Properties.models
         public string State { get; set; }
 
         public string PhoneNumber { get; set; }
+
+        //Nav property
+        public List<HotelRoom> Rooms { get; set; }
+
+
     }
 }

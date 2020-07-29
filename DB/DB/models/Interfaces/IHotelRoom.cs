@@ -13,7 +13,7 @@ namespace DB.models.Interfaces
         //Read
         Task<HotelRoom> GetHotelRoom(int hotelId, int roomNumber);
 
-        Task<List<HotelRoom>> GetHotelRooms(int hotelId);
+        Task<List<HotelRoom>> GetHotelRooms();
 
         //Update
         Task<HotelRoom> Update(HotelRoom hotelRoom);

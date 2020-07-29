@@ -25,6 +25,8 @@ namespace DB.models.Interfaces
 
         //Delete
         Task Delete(int id);
+
+        Task AddRoom(int hotelId, int roomNumber, int roomId, bool petFriendly, decimal rate);
     }
 }
 

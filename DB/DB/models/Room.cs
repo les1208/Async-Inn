@@ -8,13 +8,12 @@ namespace DB.Properties.models
     public class Room
     {
      
-
         public int Id { get; set; }
 
         public string Name { get; set; }
 
         public string Layout { get; set; }
         //Nav properties
-        public List<RoomAmenities> RoomAmenities { get; set; }
+        public List<RoomAmenities> Amenities { get; set; }
     }
 }

@@ -63,8 +63,7 @@ namespace DB.Controllers
         }
 
         [HttpPost]
-        [Route("{roomId}/Amenity/{AmenityId}")]
-        //POST: {roomid}/Amenity/{AmenityId}]
+        [Route("{roomId}/Amenity/{amenityId}")]
         public async Task<IActionResult> AddAmenityToRoom(int roomId, int amenityId)
         {
             await _room.AddAmenityToRoom(roomId, amenityId);
@@ -81,8 +80,7 @@ namespace DB.Controllers
         }
 
         //Delete Amenity 
-        [HttpDelete]
-        [Route("{roomId}/Amenity{amenityId}")]
+        [HttpDelete("{roomId}/Amenity{amenityId}")]
         public async Task<IActionResult> RemoveAmenityFromRoom(int roomId, int amenityId)
         {
             await _room.RemoveAmenityFromRoom(roomId, amenityId);

@@ -1,4 +1,5 @@
 ﻿using DB.Properties.models;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,10 @@ using System.Threading.Tasks;
 namespace DB.models
 {
     public class HotelRoom
-    {   //CK both keys come together
+
+    {
+        public int Id { get; set; }
+        //CK both keys come together
         public int HotelId { get; set; }
 
         public int RoomNumber { get; set; }
